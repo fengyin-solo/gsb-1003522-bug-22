@@ -52,42 +52,221 @@ export const SEED_ROWS: Record<string, EntryRow[]> = {
       "status": "已采集",
       "pending": true,
       "abnormal": false,
+      "archived": false,
+      "reviewTrace": [],
       "记录编号": "WATE-0001",
-      "站点编号": "WATE-0001",
-      "观测时间": "2026-09-01",
-      "当前水位": "水位监测样例1",
-      "警戒水位": "水位监测样例1",
-      "保证水位": "水位监测样例1",
-      "水位变幅": "水位监测样例1",
-      "记录状态": "水位监测样例1"
+      "站点编号": "STAT-001",
+      "观测时间": "2026-10-03 08:00",
+      "当前水位": 35.20,
+      "警戒水位": 38.00,
+      "保证水位": 40.50,
+      "水位变幅": 0.30,
+      "记录状态": "已采集"
     },
     {
       "id": 2,
       "status": "待审核",
       "pending": true,
-      "abnormal": true,
+      "abnormal": false,
+      "archived": false,
+      "reviewTrace": [
+        {
+          "action": "提交审核",
+          "verdict": "提交审核",
+          "operator": "值班管理员",
+          "reason": "",
+          "at": "2026-10-02T08:10:00.000Z",
+          "basis": {
+            "level": 36.80,
+            "warning": 38.00,
+            "guarantee": 40.50,
+            "exceedsWarning": false,
+            "exceedsGuarantee": false,
+            "detail": "当前水位 36.8 未越过警戒水位 38"
+          }
+        }
+      ],
       "记录编号": "WATE-0002",
-      "站点编号": "WATE-0002",
-      "观测时间": "2026-09-02",
-      "当前水位": "水位监测样例2",
-      "警戒水位": "水位监测样例2",
-      "保证水位": "水位监测样例2",
-      "水位变幅": "水位监测样例2",
-      "记录状态": "水位监测样例2"
+      "站点编号": "STAT-001",
+      "观测时间": "2026-10-02 08:00",
+      "当前水位": 36.80,
+      "警戒水位": 38.00,
+      "保证水位": 40.50,
+      "水位变幅": 0.10,
+      "记录状态": "待审核"
     },
     {
       "id": 3,
-      "status": "已通过",
-      "pending": false,
+      "status": "待审核",
+      "pending": true,
       "abnormal": false,
+      "archived": false,
+      "reviewTrace": [
+        {
+          "action": "提交审核",
+          "verdict": "提交审核",
+          "operator": "值班管理员",
+          "reason": "",
+          "at": "2026-10-02T09:10:00.000Z",
+          "basis": {
+            "level": 38.60,
+            "warning": 38.00,
+            "guarantee": 40.50,
+            "exceedsWarning": true,
+            "exceedsGuarantee": false,
+            "detail": "当前水位 38.6 已越过警戒水位 38"
+          }
+        }
+      ],
       "记录编号": "WATE-0003",
-      "站点编号": "WATE-0003",
-      "观测时间": "2026-09-03",
-      "当前水位": "水位监测样例3",
-      "警戒水位": "水位监测样例3",
-      "保证水位": "水位监测样例3",
-      "水位变幅": "水位监测样例3",
-      "记录状态": "水位监测样例3"
+      "站点编号": "STAT-002",
+      "观测时间": "2026-10-02 09:00",
+      "当前水位": 38.60,
+      "警戒水位": 38.00,
+      "保证水位": 40.50,
+      "水位变幅": 1.20,
+      "记录状态": "待审核"
+    },
+    {
+      "id": 4,
+      "status": "异常值",
+      "pending": true,
+      "abnormal": true,
+      "archived": false,
+      "reviewTrace": [
+        {
+          "action": "提交审核",
+          "verdict": "提交审核",
+          "operator": "值班管理员",
+          "reason": "",
+          "at": "2026-10-01T08:10:00.000Z",
+          "basis": {
+            "level": 41.20,
+            "warning": 38.00,
+            "guarantee": 40.50,
+            "exceedsWarning": true,
+            "exceedsGuarantee": true,
+            "detail": "当前水位 41.2 已越过保证水位 40.5"
+          }
+        },
+        {
+          "action": "标记异常",
+          "verdict": "异常",
+          "operator": "值班管理员",
+          "reason": "超过保证水位，转异常复核",
+          "at": "2026-10-01T08:20:00.000Z",
+          "basis": {
+            "level": 41.20,
+            "warning": 38.00,
+            "guarantee": 40.50,
+            "exceedsWarning": true,
+            "exceedsGuarantee": true,
+            "detail": "当前水位 41.2 已越过保证水位 40.5"
+          }
+        }
+      ],
+      "记录编号": "WATE-0004",
+      "站点编号": "STAT-003",
+      "观测时间": "2026-10-01 08:00",
+      "当前水位": 41.20,
+      "警戒水位": 38.00,
+      "保证水位": 40.50,
+      "水位变幅": 2.60,
+      "记录状态": "异常值"
+    },
+    {
+      "id": 5,
+      "status": "待复核",
+      "pending": true,
+      "abnormal": true,
+      "archived": false,
+      "reviewTrace": [
+        {
+          "action": "标记异常",
+          "verdict": "异常",
+          "operator": "值班管理员",
+          "reason": "变幅突变",
+          "at": "2026-10-01T10:20:00.000Z",
+          "basis": {
+            "level": 37.40,
+            "warning": 38.00,
+            "guarantee": 40.50,
+            "exceedsWarning": false,
+            "exceedsGuarantee": false,
+            "detail": "当前水位 37.4 未越过警戒水位 38"
+          }
+        },
+        {
+          "action": "发起复核",
+          "verdict": "进入复核",
+          "operator": "值班管理员",
+          "reason": "等待比测数据",
+          "at": "2026-10-01T11:00:00.000Z",
+          "basis": {
+            "level": 37.40,
+            "warning": 38.00,
+            "guarantee": 40.50,
+            "exceedsWarning": false,
+            "exceedsGuarantee": false,
+            "detail": "当前水位 37.4 未越过警戒水位 38"
+          }
+        }
+      ],
+      "记录编号": "WATE-0005",
+      "站点编号": "STAT-004",
+      "观测时间": "2026-10-01 10:00",
+      "当前水位": 37.40,
+      "警戒水位": 38.00,
+      "保证水位": 40.50,
+      "水位变幅": 3.10,
+      "记录状态": "待复核"
+    },
+    {
+      "id": 6,
+      "status": "已归档",
+      "pending": false,
+      "abnormal": true,
+      "archived": true,
+      "reviewTrace": [
+        {
+          "action": "标记异常",
+          "verdict": "异常",
+          "operator": "值班管理员",
+          "reason": "仪器故障数据",
+          "at": "2026-09-30T08:20:00.000Z",
+          "basis": {
+            "level": 41.80,
+            "warning": 38.00,
+            "guarantee": 40.50,
+            "exceedsWarning": true,
+            "exceedsGuarantee": true,
+            "detail": "当前水位 41.8 已越过保证水位 40.5"
+          }
+        },
+        {
+          "action": "归档",
+          "verdict": "归档",
+          "operator": "值班管理员",
+          "reason": "确认仪器故障，数据归档不再复核",
+          "at": "2026-09-30T15:00:00.000Z",
+          "basis": {
+            "level": 41.80,
+            "warning": 38.00,
+            "guarantee": 40.50,
+            "exceedsWarning": true,
+            "exceedsGuarantee": true,
+            "detail": "当前水位 41.8 已越过保证水位 40.5"
+          }
+        }
+      ],
+      "记录编号": "WATE-0006",
+      "站点编号": "STAT-005",
+      "观测时间": "2026-09-30 08:00",
+      "当前水位": 41.80,
+      "警戒水位": 38.00,
+      "保证水位": 40.50,
+      "水位变幅": 4.20,
+      "记录状态": "已归档"
     }
   ],
   "discharge": [

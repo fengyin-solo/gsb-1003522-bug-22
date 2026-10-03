@@ -5,7 +5,8 @@ export type EntryRow = {
   status: string
   pending: boolean
   abnormal: boolean
-  [field: string]: string | number | boolean
+  // 业务字段允许是任意标量或结构化数据（如水位记录的审核轨迹数组）。
+  [field: string]: unknown
 }
 
 export type ModuleMeta = {
